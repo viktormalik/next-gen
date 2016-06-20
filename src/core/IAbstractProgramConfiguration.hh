@@ -21,13 +21,13 @@ class IAbstractProgramConfiguration {
    * @param id Variable ID
    * @param type Variable type
    */
-  virtual void AddGlobalVariable(VariableId id, Type type) = 0;
+  virtual void AddGlobalVariable(VariableId id, Type& type) = 0;
   /**
    * Create new local variable.
    * @param id Varible ID.
    * @param type Variable type.
    */
-  virtual void AddVariable(VariableId id, Type type) = 0;
+  virtual void AddVariable(VariableId id, Type& type) = 0;
   /**
    * Remove variable.
    * @param Variable ID.

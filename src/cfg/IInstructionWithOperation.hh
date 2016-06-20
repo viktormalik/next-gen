@@ -11,7 +11,7 @@
 #include <cfg/IOperation.hh>
 #include <vector>
 
-class IInstructionWithOperation: public IInstruction, IOperation {
+class IInstructionWithOperation: public IInstruction, public IOperation {
  public:
   /**
    * Destructor.
