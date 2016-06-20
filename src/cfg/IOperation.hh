@@ -28,6 +28,10 @@ class IOperation {
    */
   virtual std::vector<std::unique_ptr<ISymState>>
       Do(ISymState* state, std::vector<VariableId> args) = 0;
+  /**
+   * Destructor.
+   */
+  virtual ~IOperation() { }
 };
 
 

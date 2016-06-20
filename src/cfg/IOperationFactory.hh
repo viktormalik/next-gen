@@ -44,6 +44,11 @@ class IOperationFactory {
 
   // Other operations
   virtual IOperation* CreateIcmp(IcmpCode code) = 0;
+
+  /**
+   * Destructor.
+   */
+  virtual ~IOperationFactory() { }
 };
 
 

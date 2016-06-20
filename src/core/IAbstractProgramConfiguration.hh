@@ -54,6 +54,11 @@ class IAbstractProgramConfiguration {
    * @param Pointer to the space to be freed.
    */
   virtual void Free(ValuePtr val_with_address) = 0;
+
+  /**
+   * Destructor.
+   */
+  virtual ~IAbstractProgramConfiguration() { }
 };
 
 

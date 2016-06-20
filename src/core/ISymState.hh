@@ -21,6 +21,11 @@ class ISymState {
    * @return Pointer to the program configuration.
    */
   virtual IAbstractProgramConfiguration& Context() const = 0;
+
+  /**
+   * Destructor.
+   */
+  virtual ~ISymState() { }
 };
 
 
