@@ -2,7 +2,7 @@
  *  Viktor Malik, 20.6.2016 (c).
  */
 
-#include <cfg/InstructionNode.hh>
+#include "InstructionNode.hh"
 
 InstructionNode::InstructionNode(llvm::Instruction* inner_instr, IOperation* operation_impl)
     : inner_instr_(inner_instr), operation_impl_(operation_impl) { }

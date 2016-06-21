@@ -41,17 +41,17 @@ class InstructionNode: public IInstructionWithOperation {
 
   // Methods from the interface IInstructionWithOperation (see IInstructionWithOperation.hh for
   // documentation
-  IInstruction* Next() const;
-  IInstruction* NextTrue() const;
-  IInstruction* NextFalse() const;
-  std::vector<IInstruction*> Prev() const;
-  void SetNext(IInstruction* next);
-  void SetNextTrue(IInstruction* next_true);
-  void SetNextFalse(IInstruction* next_false);
-  void AddPrev(IInstruction* prev);
-  std::vector<ISymState*> States() const;
+  IInstruction* Next() const override;
+  IInstruction* NextTrue() const override;
+  IInstruction* NextFalse() const override;
+  std::vector<IInstruction*> Prev() const override;
+  void SetNext(IInstruction* next) override;
+  void SetNextTrue(IInstruction* next_true) override;
+  void SetNextFalse(IInstruction* next_false) override;
+  void AddPrev(IInstruction* prev) override;
+  std::vector<ISymState*> States() const override;
   std::vector<std::unique_ptr<ISymState>>
-      Do(ISymState* state, std::vector<VariableId> args);
+      Do(ISymState* state, std::vector<VariableId> args) override;
 
   /**
    * Inner LLVM instruction (node in LLVM IR CFG).
