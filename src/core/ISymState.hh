@@ -15,12 +15,12 @@ class ISymState {
    * Location of the state (CFG node).
    * @return Pointer to the CFG node which holds this state.
    */
-  virtual IInstructionWithOperation* Location() const = 0;
+  virtual IInstructionWithOperation* Location() = 0;
   /**
    * Symbolic program configuration associated with the state (SPC).
    * @return Pointer to the program configuration.
    */
-  virtual IAbstractProgramConfiguration& Context() const = 0;
+  virtual IAbstractProgramConfiguration& Context() = 0;
 
   /**
    * Destructor.
