@@ -4,16 +4,13 @@
 
 #include "LlvmSourceParser.hh"
 
-LlvmSourceParser::LlvmSourceParser(llvm::Module* module, IOperationFactory* op_factory) :
-    module_(module), op_factory_(op_factory) { }
-
-LlvmSourceParser::~LlvmSourceParser() {
-  delete op_factory_;
-}
+LlvmSourceParser::LlvmSourceParser(std::unique_ptr<llvm::Module> module,
+                                   std::unique_ptr<IOperationFactory> op_factory)
+    : module_(std::move(module)), op_factory_(std::move(op_factory)) { }
 
 InstructionNode* LlvmSourceParser::parseCFG() {
   // Get first instruction of function main
-  auto& entry_point =  module_->getFunction("main")->getEntryBlock().front();
+  auto& entry_point = module_->getFunction("main")->getEntryBlock().front();
 
   return createNodeFromInstruction(&entry_point);
 }
@@ -98,7 +95,8 @@ InstructionNode* LlvmSourceParser::createNodeFromInstruction(llvm::Instruction* 
     case llvm::Instruction::ICmp: {
       auto pred = dynamic_cast<llvm::CmpInst*>(instruction)->getPredicate();
       op = op_factory_->CreateICmp(pred);
-    } break;
+    }
+      break;
 
     default:
       op = nullptr;

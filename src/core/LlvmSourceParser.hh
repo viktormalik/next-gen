@@ -10,16 +10,18 @@
 #include <llvm/IR/Module.h>
 #include <cfg/InstructionNode.hh>
 #include <cfg/IOperationFactory.hh>
+#include <memory>
 
 class LlvmSourceParser {
  private:
-  llvm::Module* module_;           /**< LLVM module to be parsed */
-  IOperationFactory* op_factory_;  /**< Factory to create operations */
+  std::unique_ptr<llvm::Module> module_;           /**< LLVM module to be parsed */
+  std::unique_ptr<IOperationFactory> op_factory_;  /**< Factory to create operations */
 
  public:
-  LlvmSourceParser(llvm::Module* module, IOperationFactory* op_factory);
+  LlvmSourceParser
+      (std::unique_ptr<llvm::Module> module, std::unique_ptr<IOperationFactory> op_factory);
 
-  virtual ~LlvmSourceParser();
+  virtual ~LlvmSourceParser() { }
 
 /**
    * Parse LLVM IR given by Module.
