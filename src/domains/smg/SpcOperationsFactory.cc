@@ -10,11 +10,11 @@
 #include <domains/smg/operations/SpcOperationLoad.hh>
 #include <domains/smg/operations/SpcOperationStore.hh>
 
-IOperation* SpcOperationsFactory::CreateReturn() {
+IOperation* SpcOperationsFactory::CreateRet() {
   return new SpcOperationRet;
 }
 
-IOperation* SpcOperationsFactory::CreateBranch() {
+IOperation* SpcOperationsFactory::CreateBr() {
   return nullptr;
 }
 
@@ -30,19 +30,19 @@ IOperation* SpcOperationsFactory::CreateMul() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateUdiv() {
+IOperation* SpcOperationsFactory::CreateUDiv() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateSdiv() {
+IOperation* SpcOperationsFactory::CreateSDiv() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateUrem() {
+IOperation* SpcOperationsFactory::CreateURem() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateSrem() {
+IOperation* SpcOperationsFactory::CreateSRem() {
   return nullptr;
 }
 
@@ -50,11 +50,11 @@ IOperation* SpcOperationsFactory::CreateShl() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateLshr() {
+IOperation* SpcOperationsFactory::CreateLShr() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateAshr() {
+IOperation* SpcOperationsFactory::CreateAShr() {
   return nullptr;
 }
 
@@ -82,11 +82,11 @@ IOperation* SpcOperationsFactory::CreateStore() {
   return new SpcOperationStore;
 }
 
-IOperation* SpcOperationsFactory::CreateGetelementptr() {
+IOperation* SpcOperationsFactory::CreateGetElementPtr() {
   return nullptr;
 }
 
-IOperation* SpcOperationsFactory::CreateIcmp(IcmpCode code) {
+IOperation* SpcOperationsFactory::CreateICmp(llvm::CmpInst::Predicate code) {
   return nullptr;
 }
 

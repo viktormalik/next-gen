@@ -33,11 +33,13 @@ class InstructionNode: public IInstructionWithOperation {
 
  public:
   /**
-   * Constructor with LLVM instruction and wrapper operation assignment.
+   * Constructor with LLVM instruction and operation assignment.
    * @param inner_instr Pointer to the LLVM instruction in this CFG node
    * @param operation_impl Pointer to the operation performed by this node
    */
   InstructionNode(llvm::Instruction* inner_instr, IOperation* operation_impl);
+
+  virtual ~InstructionNode();
 
   // Methods from the interface IInstructionWithOperation (see IInstructionWithOperation.hh for
   // documentation

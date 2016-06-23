@@ -34,6 +34,6 @@ set(SOURCE_FILES
         src/domains/smg/operations/SpcOperationAdd.hh
         src/domains/smg/operations/SpcOperationRet.cc
         src/domains/smg/operations/SpcOperationRet.hh
-        )
+        src/core/LlvmSourceParser.cc src/core/LlvmSourceParser.hh)
 
 add_library(nextgen SHARED ${SOURCE_FILES})

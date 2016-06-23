@@ -7,6 +7,10 @@
 InstructionNode::InstructionNode(llvm::Instruction* inner_instr, IOperation* operation_impl)
     : inner_instr_(inner_instr), operation_impl_(operation_impl) { }
 
+InstructionNode::~InstructionNode() {
+  delete operation_impl_;
+}
+
 IInstruction* InstructionNode::Next() const {
   return next_;
 }
@@ -54,3 +58,5 @@ void InstructionNode::SetNextFalse(IInstruction* next_false) {
 void InstructionNode::AddPrev(IInstruction* prev) {
   prev_.push_back(prev);
 }
+
+

@@ -11,26 +11,26 @@
 
 class SpcOperationsFactory : public IOperationFactory {
  public:
-  IOperation* CreateReturn() override;
-  IOperation* CreateBranch() override;
+  IOperation* CreateRet() override;
+  IOperation* CreateBr() override;
   IOperation* CreateAdd() override;
   IOperation* CreateSub() override;
   IOperation* CreateMul() override;
-  IOperation* CreateUdiv() override;
-  IOperation* CreateSdiv() override;
-  IOperation* CreateUrem() override;
-  IOperation* CreateSrem() override;
+  IOperation* CreateUDiv() override;
+  IOperation* CreateSDiv() override;
+  IOperation* CreateURem() override;
+  IOperation* CreateSRem() override;
   IOperation* CreateShl() override;
-  IOperation* CreateLshr() override;
-  IOperation* CreateAshr() override;
+  IOperation* CreateLShr() override;
+  IOperation* CreateAShr() override;
   IOperation* CreateAnd() override;
   IOperation* CreateOr() override;
   IOperation* CreateXor() override;
   IOperation* CreateAlloca() override;
   IOperation* CreateLoad() override;
   IOperation* CreateStore() override;
-  IOperation* CreateGetelementptr() override;
-  IOperation* CreateIcmp(IcmpCode code) override;
+  IOperation* CreateGetElementPtr() override;
+  IOperation* CreateICmp(llvm::CmpInst::Predicate code) override;
 };
 
 

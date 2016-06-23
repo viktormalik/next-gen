@@ -10,28 +10,29 @@
 #pragma once
 
 #include <cfg/IOperation.hh>
+#include <llvm/IR/Instructions.h>
 
 typedef enum { EQ, NE, UGT, UGE, ULT, ULE, SGT, SGE, SLT, SLE } IcmpCode;
 
 class IOperationFactory {
  public:
   // Terminator operations
-  virtual IOperation* CreateReturn() = 0;
-  virtual IOperation* CreateBranch() = 0;
+  virtual IOperation* CreateRet() = 0;
+  virtual IOperation* CreateBr() = 0;
 
   // Binary operations (integers only)
   virtual IOperation* CreateAdd() = 0;
   virtual IOperation* CreateSub() = 0;
   virtual IOperation* CreateMul() = 0;
-  virtual IOperation* CreateUdiv() = 0;
-  virtual IOperation* CreateSdiv() = 0;
-  virtual IOperation* CreateUrem() = 0;
-  virtual IOperation* CreateSrem() = 0;
+  virtual IOperation* CreateUDiv() = 0;
+  virtual IOperation* CreateSDiv() = 0;
+  virtual IOperation* CreateURem() = 0;
+  virtual IOperation* CreateSRem() = 0;
 
   // Bitwise binary operations
   virtual IOperation* CreateShl() = 0;
-  virtual IOperation* CreateLshr() = 0;
-  virtual IOperation* CreateAshr() = 0;
+  virtual IOperation* CreateLShr() = 0;
+  virtual IOperation* CreateAShr() = 0;
   virtual IOperation* CreateAnd() = 0;
   virtual IOperation* CreateOr() = 0;
   virtual IOperation* CreateXor() = 0;
@@ -40,10 +41,10 @@ class IOperationFactory {
   virtual IOperation* CreateAlloca() = 0;
   virtual IOperation* CreateLoad() = 0;
   virtual IOperation* CreateStore() = 0;
-  virtual IOperation* CreateGetelementptr() = 0;
+  virtual IOperation* CreateGetElementPtr() = 0;
 
   // Other operations
-  virtual IOperation* CreateIcmp(IcmpCode code) = 0;
+  virtual IOperation* CreateICmp(llvm::CmpInst::Predicate code) = 0;
 
   /**
    * Destructor.
