@@ -93,7 +93,7 @@ InstructionNode* LlvmSourceParser::createNodeFromInstruction(llvm::Instruction* 
 
       // Other operations
     case llvm::Instruction::ICmp: {
-      auto pred = dynamic_cast<llvm::CmpInst*>(instruction)->getPredicate();
+      auto pred = static_cast<llvm::CmpInst*>(instruction)->getPredicate();
       op = op_factory_->CreateICmp(pred);
     }
       break;
@@ -112,7 +112,7 @@ InstructionNode* LlvmSourceParser::createNodeFromInstruction(llvm::Instruction* 
     // If the instruction is terminator, links go to the next block
     // @TODO Supports only ret and br (conditional and unconditional)
     if (instruction->getOpcode() == llvm::Instruction::Br) {
-      auto branch_instr = dynamic_cast<llvm::BranchInst*>(instruction);
+      auto branch_instr = static_cast<llvm::BranchInst*>(instruction);
       if (branch_instr->isUnconditional()) {
         // Unconditional branch - next is first instruction of target basic block
         inode->SetNext(createNodeFromInstruction(&(branch_instr->getSuccessor(0)->front())));
@@ -123,7 +123,6 @@ InstructionNode* LlvmSourceParser::createNodeFromInstruction(llvm::Instruction* 
       }
     }
   }
-
 }
 
 

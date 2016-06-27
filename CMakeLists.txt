@@ -1,10 +1,19 @@
 cmake_minimum_required(VERSION 3.3)
 project(next_gen)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+add_subdirectory(tests)
 
+find_package(LLVM REQUIRED CONFIG)
+message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+
+include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(src/)
-include_directories(/home/viktor/local/include)
+
+add_definitions(${LLVM_DEFINITIONS})
+add_definitions (-std=c++11)
+
+message(STATUS "Cmake libpath ${CMAKE_LIBRARY_PATH}")
 
 set(SOURCE_FILES
         src/cfg/IInstruction.hh
@@ -34,6 +43,13 @@ set(SOURCE_FILES
         src/domains/smg/operations/SpcOperationAdd.hh
         src/domains/smg/operations/SpcOperationRet.cc
         src/domains/smg/operations/SpcOperationRet.hh
-        src/core/LlvmSourceParser.cc src/core/LlvmSourceParser.hh)
+        src/core/LlvmSourceParser.cc
+        src/core/LlvmSourceParser.hh
+        src/core/LlvmLoader.cc
+        src/core/LlvmLoader.hh)
 
 add_library(nextgen SHARED ${SOURCE_FILES})
+
+llvm_map_components_to_libnames(LLVM_LIBS core support irreader)
+
+target_link_libraries(nextgen ${LLVM_LIBS})
