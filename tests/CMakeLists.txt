@@ -13,7 +13,7 @@ add_definitions (-std=c++11)
 
 message(STATUS "Cmake libpath ${CMAKE_LIBRARY_PATH}")
 
-set(TESTS core/LlvmLoaderTest.cc)
+set(TESTS core/LlvmLoaderTest.cc core/LlvmSourceParserTest.cc)
 
 add_executable(tests ${TESTS})
 

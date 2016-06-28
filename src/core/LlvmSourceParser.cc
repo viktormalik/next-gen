@@ -123,6 +123,8 @@ InstructionNode* LlvmSourceParser::createNodeFromInstruction(llvm::Instruction* 
       }
     }
   }
+
+  return inode;
 }
 
 
