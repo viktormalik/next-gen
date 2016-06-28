@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 project(next_gen)
 
 add_subdirectory(tests)
+add_subdirectory(src/passes)
 
 find_package(LLVM REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
@@ -53,3 +54,4 @@ add_library(nextgen SHARED ${SOURCE_FILES})
 llvm_map_components_to_libnames(LLVM_LIBS core support irreader)
 
 target_link_libraries(nextgen ${LLVM_LIBS})
+target_link_libraries(nextgen passes)
